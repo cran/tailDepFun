@@ -13,7 +13,7 @@ NULL
 #' @param Tol For "Mestimator" only. The tolerance in the numerical integration procedure. Defaults to 1e-05.
 #' @return A \code{q} by \code{q} matrix.
 #' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @seealso \code{\link{selectGrid}}
 #' @details The parameters of a The matrix \code{indices} can be either user-defined or returned from the function \code{selectGrid} with \code{cst = c(0,1)}. Calculation might be rather slow for \code{method = "Mestimator"}.
 #' @export
@@ -173,7 +173,7 @@ WLSestimatorBR <- function(x, locations, indices, k, biascorr, k1, tau, isotropi
 #' @param Omega A \eqn{q} x \eqn{q} matrix specifying the metric with which the distance between the parametric and nonparametric estimates will be computed. The default is the identity matrix, i.e., the Euclidean metric.
 #' @param iterate A Boolean variable. If \code{TRUE}, then for \code{method = "Mestimator"} the estimator is calculated twice, first with \code{Omega} specified by the user, and then a second time with the optimal \code{Omega} calculated at the initial estimate. If \code{method = "WLS"}, then continuous updating is used.
 #' @param covMat A Boolean variable. If \code{TRUE} (the default), the covariance matrix is calculated. Standard errors are obtained by taking the square root of the diagonal elements.
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 #' @return A list with the following components:
 #' \tabular{ll}{
@@ -187,18 +187,18 @@ WLSestimatorBR <- function(x, locations, indices, k, biascorr, k1, tau, isotropi
 #' @export
 #' @examples
 #' ## define the locations of 9 stations
-#' ## locations <- cbind(rep(c(1:3), each = 3), rep(1:3, 3))
+#' locations <- cbind(rep(c(1:3), each = 3), rep(1:3, 3))
 #' ## select the pairs of locations
-#' ## indices <- selectGrid(cst = c(0,1), d = 9, locations = locations, maxDistance = 1.5)
+#' indices <- selectGrid(cst = c(0,1), d = 9, locations = locations, maxDistance = 1.5)
 #' ## The Brown-Resnick process
-#' ## set.seed(1)
-#' ## x <- SpatialExtremes::rmaxstab(n = 1000, coord = locations, cov.mod = "brown",
-#' ##                               range = 3, smooth = 1)
+#' set.seed(1)
+#' x <- SpatialExtremes::rmaxstab(n = 1000, coord = locations, cov.mod = "brown",
+#'                                range = 3, smooth = 1)
 #' ## Calculate the estimtors.
-#' ## EstimationBR(x, locations, indices, 100, method = "Mestimator", isotropic = TRUE,
-#' ##             covMat = FALSE)$theta
-#' ## EstimationBR(x, locations, indices, 100, method = "WLS", isotropic = TRUE,
-#' ## covMat = FALSE)$theta
+#' EstimationBR(x, locations, indices, 100, method = "Mestimator", isotropic = TRUE,
+#'              covMat = FALSE)$theta
+#' EstimationBR(x, locations, indices, 100, method = "WLS", isotropic = TRUE,
+#' covMat = FALSE)$theta
 
 EstimationBR <- function(x, locations, indices, k, method, isotropic = FALSE, biascorr = FALSE,
                          Tol = 1e-05, k1 = (nrow(x) - 10), tau = 5, startingValue = NULL,
@@ -219,7 +219,7 @@ EstimationBR <- function(x, locations, indices, k, method, isotropic = FALSE, bi
             startingValue<-c(1,1.5,0.75,0.75)
         }
     }
-    if(any(rowSums(indices) > 2) || (unique(c(indices)) != c(0,1) && unique(c(indices)) != c(1,0))){
+    if(any(rowSums(indices) > 2)){
         warning("The matrix indices should only contain rows with (d-2) zeroes and 2 ones")
     } else if(method == "Mestimator" && biascorr == TRUE){
         warning("biascorr can only be used for method = WLS")

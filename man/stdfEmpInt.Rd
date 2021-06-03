@@ -11,6 +11,9 @@ stdfEmpInt(ranks, k)
 
 \item{k}{An integer between 1 and \eqn{n - 1}; the threshold parameter in the definition of the empirical stable tail dependence function.#' @return A scalar.}
 }
+\value{
+A positive scalar.
+}
 \description{
 Analytical implementation of the integral of the bivariate stable tail dependence function over the unit square.
 }
@@ -21,4 +24,3 @@ stdfEmpInt(ranks, k = 5)
 \references{
 Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 }
-

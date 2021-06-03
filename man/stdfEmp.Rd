@@ -27,9 +27,8 @@ data <- copula::rCopula(n = 1000, copula = cop)
 stdfEmp(apply(data,2,rank), k = 50)
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 }
 \seealso{
 \code{\link{stdfEmpCorr}}
 }
-

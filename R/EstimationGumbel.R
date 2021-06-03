@@ -12,7 +12,7 @@ NULL
 #' @return A \code{q} by \code{q} matrix.
 #' @seealso \code{\link{selectGrid}}
 #' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @details The matrix \code{indices} can be either user defines or returned by \code{selectGrid}. For \code{method = "Mestimator"}, only a grid with exactly two ones per row is accepted, representing the pairs to be used.
 #' @export
 #' @examples
@@ -91,20 +91,20 @@ MestimatorGumbel <- function(x, indices, k, covMat){
 #' \code{value} \tab The value of the minimized function at \code{theta}. \cr
 #' }
 #' @seealso \code{\link{selectGrid}}
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 #' @export
 #' @examples
 #' ## Generate data with theta = 0.5
-#' ## set.seed(1)
-#' ## n <- 1000
-#' ## cop <- copula::gumbelCopula(param = 2, dim = 3)
-#' ## data <- copula::rCopula(n = n,copula = cop)
+#' set.seed(1)
+#' n <- 1000
+#' cop <- copula::gumbelCopula(param = 2, dim = 3)
+#' data <- copula::rCopula(n = n,copula = cop)
 #' ## Transform data to unit Pareto margins
-#' ## x <- apply(data, 2, function(i) n/(n + 0.5 - rank(i)))
+#' x <- apply(data, 2, function(i) n/(n + 0.5 - rank(i)))
 #' ## Define indices in which we evaluate the estimator
-#' ## indices <- selectGrid(c(0,1), d = 3)
-#' ## EstimationGumbel(x, indices, k = 50, method = "WLS", biascorr = TRUE)
+#' indices <- selectGrid(c(0,1), d = 3)
+#' EstimationGumbel(x, indices, k = 50, method = "WLS", biascorr = TRUE)
 EstimationGumbel <- function(x, indices, k, method, biascorr = FALSE, k1 = (nrow(x) - 10),tau = 5,covMat=TRUE) {
     if(method == "Mestimator" && biascorr == TRUE){
       warning("biascorr can only be used for method = WLS")

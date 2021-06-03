@@ -3,7 +3,6 @@
 \docType{package}
 \name{tailDepFun}
 \alias{tailDepFun}
-\alias{tailDepFun-package}
 \title{tailDepFun}
 \description{
 The package \code{tailDepFun} provides functions implementing two rank-based minimal distance estimation
@@ -22,16 +21,15 @@ returns the integral of the bivariate empirical stable tail dependence function 
 function. The functions \code{\link{AsymVarBR}}, \code{\link{AsymVarGumbel}}, \code{\link{AsymVarMaxLinear}}
 return the asymptotic covariance matrices of the estimators. An auxiliary function to select a regular
 grid of indices in which to evaluate the stable tail dependence function is exported as well,
-\code{\link{selectGrid}}. Finally, two datasets are available: \code{\link{dataKNMI}} (Einmahl et al., 2016a)
-and \code{\link{dataEUROSTOXX}} (Einmahl et al., 2016b).
+\code{\link{selectGrid}}. Finally, two datasets are available: \code{\link{dataKNMI}} (Einmahl et al., 2016)
+and \code{\link{dataEUROSTOXX}} (Einmahl et al., 2018).
 }
 \examples{
 ## get a list of all help files of user-visible functions in the package
 help(package = tailDepFun)
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016a). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
+Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016b). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 }
-

@@ -4,10 +4,22 @@
 \alias{EstimationBR}
 \title{Estimation of the parameters of the Brown-Resnick process}
 \usage{
-EstimationBR(x, locations, indices, k, method, isotropic = FALSE,
-  biascorr = FALSE, Tol = 1e-05, k1 = (nrow(x) - 10), tau = 5,
-  startingValue = NULL, Omega = diag(nrow(indices)), iterate = FALSE,
-  covMat = TRUE)
+EstimationBR(
+  x,
+  locations,
+  indices,
+  k,
+  method,
+  isotropic = FALSE,
+  biascorr = FALSE,
+  Tol = 1e-05,
+  k1 = (nrow(x) - 10),
+  tau = 5,
+  startingValue = NULL,
+  Omega = diag(nrow(indices)),
+  iterate = FALSE,
+  covMat = TRUE
+)
 }
 \arguments{
 \item{x}{An \eqn{n} x \eqn{d} data matrix.}
@@ -55,25 +67,24 @@ The parameters of the Brown-Resnick process are either \eqn{(\alpha,\rho)} for a
 }
 \examples{
 ## define the locations of 9 stations
-## locations <- cbind(rep(c(1:3), each = 3), rep(1:3, 3))
+locations <- cbind(rep(c(1:3), each = 3), rep(1:3, 3))
 ## select the pairs of locations
-## indices <- selectGrid(cst = c(0,1), d = 9, locations = locations, maxDistance = 1.5)
+indices <- selectGrid(cst = c(0,1), d = 9, locations = locations, maxDistance = 1.5)
 ## The Brown-Resnick process
-## set.seed(1)
-## x <- SpatialExtremes::rmaxstab(n = 1000, coord = locations, cov.mod = "brown",
-##                               range = 3, smooth = 1)
+set.seed(1)
+x <- SpatialExtremes::rmaxstab(n = 1000, coord = locations, cov.mod = "brown",
+                               range = 3, smooth = 1)
 ## Calculate the estimtors.
-## EstimationBR(x, locations, indices, 100, method = "Mestimator", isotropic = TRUE,
-##             covMat = FALSE)$theta
-## EstimationBR(x, locations, indices, 100, method = "WLS", isotropic = TRUE,
-## covMat = FALSE)$theta
+EstimationBR(x, locations, indices, 100, method = "Mestimator", isotropic = TRUE,
+             covMat = FALSE)$theta
+EstimationBR(x, locations, indices, 100, method = "WLS", isotropic = TRUE,
+covMat = FALSE)$theta
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 
 Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 }
 \seealso{
 \code{\link{selectGrid}}
 }
-

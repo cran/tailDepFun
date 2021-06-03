@@ -4,8 +4,16 @@
 \alias{EstimationGumbel}
 \title{Estimation of the parameter of the Gumbel model}
 \usage{
-EstimationGumbel(x, indices, k, method, biascorr = FALSE, k1 = (nrow(x) -
-  10), tau = 5, covMat = TRUE)
+EstimationGumbel(
+  x,
+  indices,
+  k,
+  method,
+  biascorr = FALSE,
+  k1 = (nrow(x) - 10),
+  tau = 5,
+  covMat = TRUE
+)
 }
 \arguments{
 \item{x}{An \eqn{n} x \eqn{d} data matrix.}
@@ -40,22 +48,21 @@ The matrix \code{indices} can be either user defined or returned by \code{select
 }
 \examples{
 ## Generate data with theta = 0.5
-## set.seed(1)
-## n <- 1000
-## cop <- copula::gumbelCopula(param = 2, dim = 3)
-## data <- copula::rCopula(n = n,copula = cop)
+set.seed(1)
+n <- 1000
+cop <- copula::gumbelCopula(param = 2, dim = 3)
+data <- copula::rCopula(n = n,copula = cop)
 ## Transform data to unit Pareto margins
-## x <- apply(data, 2, function(i) n/(n + 0.5 - rank(i)))
+x <- apply(data, 2, function(i) n/(n + 0.5 - rank(i)))
 ## Define indices in which we evaluate the estimator
-## indices <- selectGrid(c(0,1), d = 3)
-## EstimationGumbel(x, indices, k = 50, method = "WLS", biascorr = TRUE)
+indices <- selectGrid(c(0,1), d = 3)
+EstimationGumbel(x, indices, k = 50, method = "WLS", biascorr = TRUE)
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 
 Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 }
 \seealso{
 \code{\link{selectGrid}}
 }
-

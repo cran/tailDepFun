@@ -3,8 +3,10 @@
 \name{dataKNMI}
 \alias{dataKNMI}
 \title{Wind speeds in the Netherlands.}
-\format{dataKNMI$data is a matrix with 672 rows and 22 columns, dataKNMI$loc is a matrix with 22 rows
-and 2 columns.}
+\format{
+dataKNMI$data is a matrix with 672 rows and 22 columns, dataKNMI$loc is a matrix with 22 rows
+and 2 columns.
+}
 \source{
 KNMI
 }
@@ -26,4 +28,3 @@ covMat = FALSE)$theta
 \references{
 Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 }
-

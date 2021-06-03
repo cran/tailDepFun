@@ -11,7 +11,7 @@ NULL
 #' @param Bmatrix A function that converts the parameter vector theta to a parameter matrix B. If \code{NULL}, then a simple 2-factor model is assumed.
 #' @return A \code{q} by \code{q} matrix.
 #' @seealso \code{\link{selectGrid}}
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @export
 #' @examples
 #' indices <- selectGrid(c(0,0.5,1), d = 3, nonzero = 3)
@@ -125,7 +125,7 @@ MestimatorML <- function(x, indices, k, Bmatrix, startingValue){
 #' \code{GoFresult} \tab A list of length two, returning the value of the test statistic and \code{s}. \cr
 #' }
 #' @seealso \code{\link{selectGrid}}
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @export
 #' @examples
 #' ## Generate data

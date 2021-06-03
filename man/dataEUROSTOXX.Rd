@@ -3,7 +3,9 @@
 \name{dataEUROSTOXX}
 \alias{dataEUROSTOXX}
 \title{EUROSTOXX50 weekly negative log-returns.}
-\format{\code{dataEUROSTOXX} is a matrix with 711 rows and 10 columns.}
+\format{
+\code{dataEUROSTOXX} is a matrix with 711 rows and 10 columns.
+}
 \source{
 Yahoo Finance
 }
@@ -24,10 +26,11 @@ x <- apply(dataEUROSTOXX, 2, function(i) n/(n + 0.5 - rank(i)))
 indices <- selectGrid(c(0,0.5,1), d = 10, nonzero = c(2,3))
 start <- c(0.67,0.8,0.77,0.91,0.41,0.47,0.25,0.7,0.72,0.19,0.37,0.7,0.09,0.58)
 ## Estimate the parameters. Lasts up to ten minutes.
-## EstimationMaxLinear(x, indices, k = 40, method = "WLS", startingValue = start,
-## covMat = FALSE, EURO = TRUE)
+\donttest{
+EstimationMaxLinear(x, indices, k = 40, method = "WLS", startingValue = start,
+covMat = FALSE, EURO = TRUE)
+}
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 }
-

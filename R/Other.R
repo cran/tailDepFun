@@ -7,7 +7,7 @@
 #' @param cst The value in which the tail dependence function is evaluated: defaults to \code{rep(1,d)}, i.e., the extremal coefficient.
 #' @return A scalar between \eqn{\max(x_1,\ldots,x_d)} and \eqn{x_1 + \cdots + x_d}.
 #' @seealso \code{\link{stdfEmpCorr}}
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @export
 #' @examples
 #' ## Simulate data from the Gumbel copula and compute the extremal coefficient in dimension four.
@@ -37,7 +37,7 @@ stdfEmp <- function(ranks, k, cst = rep(1,ncol(ranks))) {
 #' @param tau The parameter of the power kernel. Defaults to 5.
 #' @param k1 An integer between 1 and \eqn{n}; defaults to \eqn{n} - 10.
 #' @return A scalar between \eqn{\max(x_1,\ldots,x_d)} and \eqn{x_1 + \cdots + x_d}.
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @references Beirlant, J., Escobar-Bach, M., Goegebeur, Y., and Guillou, A. (2016). Bias-corrected estimation of stable tail dependence function. Journal of Multivariate Analysis, 143, 453-466.
 #' @seealso \code{\link{stdfEmp}}
 #' @details The values for \code{k1} and \code{tau} are chosen as recommended in Beirlant et al. (2016). This function might be slow for large \code{n}.
@@ -65,6 +65,7 @@ stdfEmpCorr<-function(ranks,k,cst = rep(1,ncol(ranks)),tau = 5,k1 = (nrow(ranks)
 #'
 #' @param ranks A \code{n} x 2 matrix, where each column is a permutation of the integers \code{1:n}, representing the ranks computed from a sample of size \code{n}.
 #' @param k An integer between 1 and \eqn{n - 1}; the threshold parameter in the definition of the empirical stable tail dependence function.#' @return A scalar.
+#' @return A positive scalar.
 #' @export
 #' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
 #' @examples
@@ -177,8 +178,8 @@ NULL
 #'
 #' @format \code{dataEUROSTOXX} is a matrix with 711 rows and 10 columns.
 #' @source Yahoo Finance
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
 #' @name dataEUROSTOXX
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @examples
 #' data(dataEUROSTOXX)
 #' ## Transform data to unit Pareto margins
@@ -188,9 +189,10 @@ NULL
 #' indices <- selectGrid(c(0,0.5,1), d = 10, nonzero = c(2,3))
 #' start <- c(0.67,0.8,0.77,0.91,0.41,0.47,0.25,0.7,0.72,0.19,0.37,0.7,0.09,0.58)
 #' ## Estimate the parameters. Lasts up to ten minutes.
-#' ## EstimationMaxLinear(x, indices, k = 40, method = "WLS", startingValue = start,
-#' ## covMat = FALSE, EURO = TRUE)
-
+#' \donttest{
+#' EstimationMaxLinear(x, indices, k = 40, method = "WLS", startingValue = start,
+#' covMat = FALSE, EURO = TRUE)
+#' }
 NULL
 
 #' tailDepFun
@@ -210,13 +212,13 @@ NULL
 #' function. The functions \code{\link{AsymVarBR}}, \code{\link{AsymVarGumbel}}, \code{\link{AsymVarMaxLinear}}
 #' return the asymptotic covariance matrices of the estimators. An auxiliary function to select a regular
 #' grid of indices in which to evaluate the stable tail dependence function is exported as well,
-#' \code{\link{selectGrid}}. Finally, two datasets are available: \code{\link{dataKNMI}} (Einmahl et al., 2016a)
-#' and \code{\link{dataEUROSTOXX}} (Einmahl et al., 2016b).
+#' \code{\link{selectGrid}}. Finally, two datasets are available: \code{\link{dataKNMI}} (Einmahl et al., 2016)
+#' and \code{\link{dataEUROSTOXX}} (Einmahl et al., 2018).
 #'
 #' @name tailDepFun
 #' @docType package
-#' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016a). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
-#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016b). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+#' @references Einmahl, J.H.J., Kiriliouk, A., Krajina, A., and Segers, J. (2016). An Mestimator of spatial tail dependence. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 78(1), 275-298.
+#' @references Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 #' @examples
 #' ## get a list of all help files of user-visible functions in the package
 #' help(package = tailDepFun)

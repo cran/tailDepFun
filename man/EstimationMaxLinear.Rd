@@ -4,10 +4,24 @@
 \alias{EstimationMaxLinear}
 \title{Estimation of the parameters of the max-linear model}
 \usage{
-EstimationMaxLinear(x, indices, k, method, Bmatrix = NULL, Ldot = NULL,
-  biascorr = FALSE, k1 = (nrow(x) - 10), tau = 5, startingValue,
-  Omega = diag(nrow(indices)), iterate = FALSE, covMat = TRUE,
-  GoFtest = FALSE, dist = 0.01, EURO = FALSE)
+EstimationMaxLinear(
+  x,
+  indices,
+  k,
+  method,
+  Bmatrix = NULL,
+  Ldot = NULL,
+  biascorr = FALSE,
+  k1 = (nrow(x) - 10),
+  tau = 5,
+  startingValue,
+  Omega = diag(nrow(indices)),
+  iterate = FALSE,
+  covMat = TRUE,
+  GoFtest = FALSE,
+  dist = 0.01,
+  EURO = FALSE
+)
 }
 \arguments{
 \item{x}{An \eqn{n} x \eqn{d} data matrix.}
@@ -76,9 +90,8 @@ indices <- selectGrid(cst = c(0,1), d = 3)
 EstimationMaxLinear(x, indices, k = 100, method = "Mestimator", startingValue = c(0.3,0.5,0.9))
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 }
 \seealso{
 \code{\link{selectGrid}}
 }
-

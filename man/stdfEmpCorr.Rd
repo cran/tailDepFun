@@ -4,8 +4,13 @@
 \alias{stdfEmpCorr}
 \title{Bias-corrected empirical stable tail dependence function}
 \usage{
-stdfEmpCorr(ranks, k, cst = rep(1, ncol(ranks)), tau = 5,
-  k1 = (nrow(ranks) - 10))
+stdfEmpCorr(
+  ranks,
+  k,
+  cst = rep(1, ncol(ranks)),
+  tau = 5,
+  k1 = (nrow(ranks) - 10)
+)
 }
 \arguments{
 \item{ranks}{A \code{n} x \code{d} matrix, where each column is a permutation of the integers \code{1:n}, representing the ranks computed from a sample of size \code{n}.}
@@ -35,11 +40,10 @@ data <- copula::rCopula(n = 1000, copula = cop)
 stdfEmpCorr(apply(data,2,rank), k = 50)
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 
 Beirlant, J., Escobar-Bach, M., Goegebeur, Y., and Guillou, A. (2016). Bias-corrected estimation of stable tail dependence function. Journal of Multivariate Analysis, 143, 453-466.
 }
 \seealso{
 \code{\link{stdfEmp}}
 }
-

@@ -1,6 +1,7 @@
 import(cubature)
 import(mvtnorm)
 importFrom(SpatialExtremes, rmaxstab)
+importFrom(stats, dbinom)
 import(copula)
 importFrom(stats, dnorm, integrate, optim, optimize, pnorm)
 importFrom(utils, combn)

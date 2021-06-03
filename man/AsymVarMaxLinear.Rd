@@ -24,9 +24,8 @@ indices <- selectGrid(c(0,0.5,1), d = 3, nonzero = 3)
 AsymVarMaxLinear(indices, par = c(0.1,0.55,0.75))
 }
 \references{
-Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2016). A continuous updating weighted least squares estimator of tail dependence in high dimensions. See http://arxiv.org/abs/1601.04826.
+Einmahl, J.H.J., Kiriliouk, A., and Segers, J. (2018). A continuous updating weighted least squares estimator of tail dependence in high dimensions. Extremes 21(2), 205-233.
 }
 \seealso{
 \code{\link{selectGrid}}
 }
-
